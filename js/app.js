@@ -51,11 +51,14 @@ function createNav(){
 
 // sectionActiveState function is a function that toggles the class of "your-active-class" when it is visible in the viewPort or not
 function sectionActiveState(){
-    for (section of sections){
+    for (let section of sections){
         const rectangle = section.getBoundingClientRect();
-        if(rectangle.top >= 0 && rectangle.bottom >= 0){
+        if(rectangle.top >= 0 && rectangle.bottom-400 <= (window.innerHeight || document.documentElement.clientHeight)){
            toggleActiveState(section);
         }
+        else{
+            section.classList.remove('your-active-class');
+            }
     }
 }
 
@@ -63,9 +66,6 @@ function sectionActiveState(){
 function toggleActiveState(section){
     if(!section.classList.contains('your-active-class')){
         section.classList.add('your-active-class');
-    }
-    else{
-    section.classList.remove('your-active-class');
     }
 }
 
